@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="user">
+        <name>plg_swsetgroup</name>
+        <author></author>
+        <creationDate>May 2011</creationDate>
+        <copyright>Copyright (C) 2011 XXXX. All rights reserved.</copyright>
+        <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+        <authorEmail></authorEmail>
+        <authorUrl></authorUrl>
+        <version>0.0.0</version>
+        <description>PLG_SWSETGROUP_DESCRIPTION</description>
+        <files>
+                <filename plugin="plg_swsetgroup">plg_swsetgroup.php</filename>
+                <filename>index.html</filename>
+        </files>
+        <languages>
+                <language tag="en-GB">en-GB.plg_swsetgroup.ini</language>
+                <language tag="en-GB">en-GB.plg_swsetgroup.sys.ini</language>
+        </languages>
+</extension>
