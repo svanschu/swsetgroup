@@ -17,4 +17,32 @@
                 <language tag="en-GB">en-GB.plg_swsetgroup.ini</language>
                 <language tag="en-GB">en-GB.plg_swsetgroup.sys.ini</language>
         </languages>
+        <config>
+                <fields name="params">
+                        <fieldset name="basic">
+                                <field name="preg[]" type="text"
+                                        default=""
+                                        description="PLG_SWSETGROUP_PREG_DESC"
+                                        label="PLG_SWSETGROUP_PREG"
+                                ></field>
+                                <field name="preg[]" type="text"
+                                        default=""
+                                        description="PLG_SWSETGROUP_PREG_DESC"
+                                        label="PLG_SWSETGROUP_PREG"
+                                ></field>
+                                <field name="preg[]" type="text"
+                                        default=""
+                                        description="PLG_SWSETGROUP_PREG_DESC"
+                                        label="PLG_SWSETGROUP_PREG"
+                                ></field>
+                                <field name="preg[]" type="text"
+                                        default=""
+                                        description="PLG_SWSETGROUP_PREG_DESC"
+                                        label="PLG_SWSETGROUP_PREG"
+                                ></field>
+                        </fieldset>
+
+                </fields>
+        </config>
+
 </extension>
