@@ -13,32 +13,52 @@
                 <filename plugin="plg_swsetgroup">plg_swsetgroup.php</filename>
                 <filename>index.html</filename>
         </files>
-        <languages>
+        <languages folder="languages">
                 <language tag="en-GB">en-GB.plg_swsetgroup.ini</language>
                 <language tag="en-GB">en-GB.plg_swsetgroup.sys.ini</language>
         </languages>
         <config>
                 <fields name="params">
                         <fieldset name="basic">
-                                <field name="preg[]" type="text"
+                                <field name="preg[1]['preg']" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[]" type="text"
+                                <field name="preg[1]['group']" type="usergroup"
+                                       default=""
+                                       description="PLG_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_SWSETGROUP_GROUP"
+                                ></field>
+                                <field name="preg[2]['preg']" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[]" type="text"
+                                <field name="preg[2]['group']" type="usergroup"
+                                       default=""
+                                       description="PLG_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_SWSETGROUP_GROUP"
+                                ></field>
+                                <field name="preg[3]['preg']" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[]" type="text"
+                                <field name="preg[3]['group']" type="usergroup"
+                                       default=""
+                                       description="PLG_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_SWSETGROUP_GROUP"
+                                ></field>
+                                <field name="preg[4]['preg']" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
+                                ></field>
+                                <field name="preg[4]['group']" type="usergroup"
+                                       default=""
+                                       description="PLG_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_SWSETGROUP_GROUP"
                                 ></field>
                         </fieldset>
 
