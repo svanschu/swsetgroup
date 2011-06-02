@@ -20,42 +20,42 @@
         <config>
                 <fields name="params">
                         <fieldset name="basic">
-                                <field name="preg[1]['preg']" type="text"
+                                <field name="preg_1_preg" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[1]['group']" type="usergroup"
+                                <field name="preg_1_group" type="usergroup"
                                        default=""
                                        description="PLG_SWSETGROUP_GROUP_DESC"
                                        label="PLG_SWSETGROUP_GROUP"
                                 ></field>
-                                <field name="preg[2]['preg']" type="text"
+                                <field name="preg_2_preg" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[2]['group']" type="usergroup"
+                                <field name="preg_2_group" type="usergroup"
                                        default=""
                                        description="PLG_SWSETGROUP_GROUP_DESC"
                                        label="PLG_SWSETGROUP_GROUP"
                                 ></field>
-                                <field name="preg[3]['preg']" type="text"
+                                <field name="preg_3_preg" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[3]['group']" type="usergroup"
+                                <field name="preg_3_group" type="usergroup"
                                        default=""
                                        description="PLG_SWSETGROUP_GROUP_DESC"
                                        label="PLG_SWSETGROUP_GROUP"
                                 ></field>
-                                <field name="preg[4]['preg']" type="text"
+                                <field name="preg_4_preg" type="text"
                                         default=""
                                         description="PLG_SWSETGROUP_PREG_DESC"
                                         label="PLG_SWSETGROUP_PREG"
                                 ></field>
-                                <field name="preg[4]['group']" type="usergroup"
+                                <field name="preg_4_group" type="usergroup"
                                        default=""
                                        description="PLG_SWSETGROUP_GROUP_DESC"
                                        label="PLG_SWSETGROUP_GROUP"

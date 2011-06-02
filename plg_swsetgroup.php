@@ -10,35 +10,48 @@ jimport('joomla.plugin.plugin');
 
 class plgUserSwsetgroup extends JPlugin
 {
-    /**
-     * This event is triggered before an update of a user record.
-     * Password in $user array is already hashed at this point.
-     * @param  $user An associative array of the columns in the user table (current values).
-     * @param  $isnew Boolean to identify if this is a new user (true - insert) or an existing one (false - update)
-     * @return  bool    true on success
-     */
-    public function onBeforeStoreUser( $user, $isnew ) {
+
+    public function __construct(&$subject, $config)
+    {
+        parent::__construct($subject, $config);
+    }
+
+    public function onUserBeforeSave($user, $isnew, $new)
+    {
         //get the config
-        $conf = $this->param->get( 'preg', array() );
+        print("HELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\n");
+        $config = $this->param->toArray();
+
+        $all_keys = array_keys($config);
+        $group_preg = array();
+        foreach ($all_keys as $key) {
+            if (preg_match('^preg_([0-9]+)_preg$', $key, $matches)) {
+                if (array_key_exists("preg_{$matches[1]}_group")) {
+                    $group_preg["preg_{$matches[1]}_group"] = $config[$key];
+                }
+            }
+        }
+
         //perform the preg_match
-        foreach ($conf as $v) {
+        foreach ($group_preg as $group => $preg) {
             if ($isnew) {
                 // The user is new
 
                 // Add to the group if the regular expression matches
-                if (preg_match('#'.$v['preg'].'#', $user['email'])) {
-                    $user['groups'][] = $v['group'];
+                if (preg_match('#'.$preg.'#', $new['email'])) {
+                    $new['groups'][] = $group;
                 }
+                print_r($new);
             } else {
                 // The user already exists
 
-                if (preg_match('#'.$v['preg'].'#', $user['email'])) {
+                if (preg_match('#'.$preg.'#', $new['email'])) {
                     // Send verification e-mail from here
                 } else {
                     // Remove user from group.
-                    $k = array_search($v['group'], $user['groups']);
+                    $k = array_search($group, $new['groups']);
                     if ($k !== FALSE) {
-                        unset ($user['groups'][$k]);
+                        unset ($new['groups'][$k]);
                     }
                 }
             }
