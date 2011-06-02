@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="1.6" type="plugin" group="user">
-        <name>plg_swsetgroup</name>
+        <name>plg_user_swsetgroup</name>
         <author></author>
         <creationDate>May 2011</creationDate>
         <copyright>Copyright (C) 2011 XXXX. All rights reserved.</copyright>
@@ -10,7 +10,7 @@
         <version>0.0.0</version>
         <description>PLG_SWSETGROUP_DESCRIPTION</description>
         <files>
-                <filename plugin="plg_swsetgroup">plg_swsetgroup.php</filename>
+                <filename plugin="swsetgroup">swsetgroup.php</filename>
                 <filename>index.html</filename>
         </files>
         <languages folder="languages">
