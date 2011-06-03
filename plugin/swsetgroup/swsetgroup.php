@@ -19,8 +19,7 @@ class plgUserSwsetgroup extends JPlugin
     public function onUserBeforeSave($user, $isnew, $new)
     {
         //get the config
-        print("HELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\nHELLO\n");
-        $config = $this->param->toArray();
+        $config = $this->params->toArray();
 
         $all_keys = array_keys($config);
         $group_preg = array();
@@ -41,7 +40,6 @@ class plgUserSwsetgroup extends JPlugin
                 if (preg_match('#'.$preg.'#', $new['email'])) {
                     $new['groups'][] = $group;
                 }
-                print_r($new);
             } else {
                 // The user already exists
 

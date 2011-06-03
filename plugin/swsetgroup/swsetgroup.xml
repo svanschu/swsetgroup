@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="1.6" type="plugin" group="user">
+<extension version="1.6" type="plugin" group="user" method="updgrade">
         <name>plg_user_swsetgroup</name>
-        <author></author>
+        <author>Benjamin Berg & Sven Schultschik</author>
         <creationDate>May 2011</creationDate>
-        <copyright>Copyright (C) 2011 XXXX. All rights reserved.</copyright>
+        <copyright>Copyright (C) 2011 Benjamin Berg & Sven Schultschik. All rights reserved.</copyright>
         <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-        <authorEmail></authorEmail>
-        <authorUrl></authorUrl>
+        <authorEmail>admin@schultschik.de</authorEmail>
+        <authorUrl>www.schultschik.de</authorUrl>
         <version>0.0.0</version>
-        <description>PLG_SWSETGROUP_DESCRIPTION</description>
+        <description>PLG_USER_SWSETGROUP_DESCRIPTION</description>
         <files>
                 <filename plugin="swsetgroup">swsetgroup.php</filename>
                 <filename>index.html</filename>
@@ -22,43 +22,43 @@
                         <fieldset name="basic">
                                 <field name="preg_1_preg" type="text"
                                         default=""
-                                        description="PLG_SWSETGROUP_PREG_DESC"
-                                        label="PLG_SWSETGROUP_PREG"
+                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
+                                        label="PLG_USER_SWSETGROUP_PREG"
                                 ></field>
                                 <field name="preg_1_group" type="usergroup"
                                        default=""
-                                       description="PLG_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_SWSETGROUP_GROUP"
+                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_USER_SWSETGROUP_GROUP"
                                 ></field>
                                 <field name="preg_2_preg" type="text"
                                         default=""
-                                        description="PLG_SWSETGROUP_PREG_DESC"
-                                        label="PLG_SWSETGROUP_PREG"
+                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
+                                        label="PLG_USER_SWSETGROUP_PREG"
                                 ></field>
                                 <field name="preg_2_group" type="usergroup"
                                        default=""
-                                       description="PLG_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_SWSETGROUP_GROUP"
+                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_USER_SWSETGROUP_GROUP"
                                 ></field>
                                 <field name="preg_3_preg" type="text"
                                         default=""
-                                        description="PLG_SWSETGROUP_PREG_DESC"
-                                        label="PLG_SWSETGROUP_PREG"
+                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
+                                        label="PLG_USER_SWSETGROUP_PREG"
                                 ></field>
                                 <field name="preg_3_group" type="usergroup"
                                        default=""
-                                       description="PLG_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_SWSETGROUP_GROUP"
+                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_USER_SWSETGROUP_GROUP"
                                 ></field>
                                 <field name="preg_4_preg" type="text"
                                         default=""
-                                        description="PLG_SWSETGROUP_PREG_DESC"
-                                        label="PLG_SWSETGROUP_PREG"
+                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
+                                        label="PLG_USER_SWSETGROUP_PREG"
                                 ></field>
                                 <field name="preg_4_group" type="usergroup"
                                        default=""
-                                       description="PLG_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_SWSETGROUP_GROUP"
+                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
+                                       label="PLG_USER_SWSETGROUP_GROUP"
                                 ></field>
                         </fieldset>
 
