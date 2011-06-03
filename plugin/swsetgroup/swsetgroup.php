@@ -13,26 +13,44 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.plugin.plugin');
+jimport('joomla.user.user');
 
 class plgUserSwsetgroup extends JPlugin
 {
+
+    private $updating_user = false;
 
     public function __construct(&$subject, $config)
     {
         parent::__construct($subject, $config);
     }
 
-    public function onUserBeforeSave($user, $isnew, $new)
+    public function onUserAfterSave($user, $isnew, $success, $msg)
     {
+        if ($this->updating_user) {
+            print("<br/>recursed</br>\n");
+            return true;
+        }
+
+        if (!$success)
+            return false;
+
+        $this->updating_user = true;
+
         //get the config
         $config = $this->params->toArray();
 
         $all_keys = array_keys($config);
         $group_preg = array();
         foreach ($all_keys as $key) {
-            if (preg_match('^preg_([0-9]+)_preg$', $key, $matches)) {
-                if (array_key_exists("preg_{$matches[1]}_group")) {
-                    $group_preg["preg_{$matches[1]}_group"] = $config[$key];
+            if (preg_match('/^preg_([0-9]+)_preg$/', $key, $matches)) {
+                // Ignore any empty regular expression
+                if ($config[$key] != "") {
+                    // check whether there is a _group variable (maybe do not
+                    // do this and throw an PHP error in this case?
+                    if (array_key_exists("preg_{$matches[1]}_group", $config)) {
+                        $group_preg[$config["preg_{$matches[1]}_group"]] = $config[$key];
+                    }
                 }
             }
         }
@@ -43,27 +61,35 @@ class plgUserSwsetgroup extends JPlugin
                 // The user is new
 
                 // Add to the group if the regular expression matches
-                if (preg_match('#'.$preg.'#', $new['email'])) {
-                    $new['groups'][] = $group;
+                if (preg_match('#'.$preg.'#', $user['email'])) {
+                    $real_user = new JUser($user['id']);
+                    $real_user->groups[] = $group;
+                    $real_user->save();
                 }
             } else {
                 // The user already exists
 
-                if (preg_match('#'.$preg.'#', $new['email'])) {
+                if (preg_match('#'.$preg.'#', $user['email'])) {
                     // Send verification e-mail from here
                 } else {
+                    $real_user = new JUser($user['id']);
+                    $real_user->groups[] = $group;
+
                     // Remove user from group.
-                    $k = array_search($group, $new['groups']);
+                    $k = array_search($group, $real_user->groups);
                     if ($k !== FALSE) {
-                        unset ($new['groups'][$k]);
+                        unset($real_user->groups[$k]);
+
+                        if ($real_user->groups[0] == $group)
+                            unset($real_user->groups[0]);
                     }
+
+                    $real_user->save();
                 }
             }
         }
 
-
-        //$user['email'] get the user email adress
-        //$this->param->get(preg, array); get the regular expressions from backend
+        $this->updating_user = false;
         return true;
     }
 }
