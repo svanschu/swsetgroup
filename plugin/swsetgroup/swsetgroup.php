@@ -1,6 +1,12 @@
 <?php
 /**
+ * @version $Id: $
+ * SW SetGroup User Plugin
  *
+ * @package	SW SetGroup
+ * @Copyright (C) 2011 Benjamin Berg & Sven Schultschik All rights reserved
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link http://www.schultschik.de
  */
  
 // No direct access

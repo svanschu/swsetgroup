@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+	<name>com_swsetgroup</name>
+	<author>Benjamin Berg &amp; Sven Schultschik</author>
+	<creationDate>Juni 2011</creationDate>
+	<copyright>(C) 2011 Benjamin Berg &amp; Sven Schultschik. All rights reserved.	</copyright>
+	<license>GNU General Public License version 2 or later; see	LICENSE.txt</license>
+	<authorEmail>admin@schultschik.de</authorEmail>
+	<authorUrl>www.schultschik.de</authorUrl>
+	<version>0.0.0</version>
+	<description>COM_SWSETGROUP_DESC</description>
+
+	<files folder="site">
+	</files>
+	<languages folder="site">
+
+	</languages>
+	<administration>
+		<files folder="admin">
+            <file>com_swsetgroup.php</file>
+            <file>com_swsetgroup.xml</file>
+            <file>controller.php</file>
+            <file>index.html</file>
+            <folder>views</folder>
+		</files>
+		<languages folder="admin">
+            <language tag="en-GB">language/en-GB.com_swsetgroup.ini</language>
+            <language tag="en-GB">language/en-GB.com_swsetgroup.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
