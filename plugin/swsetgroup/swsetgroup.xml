@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="1.6" type="plugin" group="user" method="updgrade">
         <name>plg_user_swsetgroup</name>
-        <author>Benjamin Berg & Sven Schultschik</author>
+        <author>Benjamin Berg &amp; Sven Schultschik</author>
         <creationDate>May 2011</creationDate>
-        <copyright>Copyright (C) 2011 Benjamin Berg & Sven Schultschik. All rights reserved.</copyright>
+        <copyright>Copyright (C) 2011 Benjamin Berg &amp; Sven Schultschik. All rights reserved.</copyright>
         <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
         <authorEmail>admin@schultschik.de</authorEmail>
         <authorUrl>www.schultschik.de</authorUrl>
@@ -14,8 +14,8 @@
                 <filename>index.html</filename>
         </files>
         <languages folder="languages">
-                <language tag="en-GB">en-GB.plg_swsetgroup.ini</language>
-                <language tag="en-GB">en-GB.plg_swsetgroup.sys.ini</language>
+                <language tag="en-GB">en-GB.plg_user_swsetgroup.ini</language>
+                <language tag="en-GB">en-GB.plg_user_swsetgroup.sys.ini</language>
         </languages>
         <config>
                 <fields name="params">
