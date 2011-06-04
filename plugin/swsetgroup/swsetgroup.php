@@ -78,9 +78,6 @@ class plgUserSwsetgroup extends JPlugin
                     $k = array_search($group, $real_user->groups);
                     if ($k !== FALSE) {
                         unset($real_user->groups[$k]);
-
-                        if ($real_user->groups[0] == $group)
-                            unset($real_user->groups[0]);
                     }
 
                     $real_user->save();
