@@ -73,7 +73,6 @@ class plgUserSwsetgroup extends JPlugin
                     // Send verification e-mail from here
                 } else {
                     $real_user = new JUser($user['id']);
-                    $real_user->groups[] = $group;
 
                     // Remove user from group.
                     $k = array_search($group, $real_user->groups);
