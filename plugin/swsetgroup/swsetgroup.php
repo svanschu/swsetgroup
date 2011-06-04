@@ -27,10 +27,8 @@ class plgUserSwsetgroup extends JPlugin
 
     public function onUserAfterSave($user, $isnew, $success, $msg)
     {
-        if ($this->updating_user) {
-            print("<br/>recursed</br>\n");
+        if ($this->updating_user)
             return true;
-        }
 
         if (!$success)
             return false;
