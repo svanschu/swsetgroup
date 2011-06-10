@@ -27,10 +27,8 @@ class plgUserSwsetgroup extends JPlugin
 
     public function onUserAfterSave($user, $isnew, $success, $msg)
     {
-        if ($this->updating_user) {
-            print("<br/>recursed</br>\n");
+        if ($this->updating_user)
             return true;
-        }
 
         if (!$success)
             return false;
@@ -73,15 +71,11 @@ class plgUserSwsetgroup extends JPlugin
                     // Send verification e-mail from here
                 } else {
                     $real_user = new JUser($user['id']);
-                    $real_user->groups[] = $group;
 
                     // Remove user from group.
                     $k = array_search($group, $real_user->groups);
                     if ($k !== FALSE) {
                         unset($real_user->groups[$k]);
-
-                        if ($real_user->groups[0] == $group)
-                            unset($real_user->groups[0]);
                     }
 
                     $real_user->save();
