@@ -15,11 +15,20 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class SwsetgroupViewSwsetgroup extends JView
+class SwsetgroupViewPending extends JView
 {
 	function display($tpl = null){
 		JToolBarHelper::title( JText::_( 'COM_SWSETGROUP' ), 'generic.png' );
-		
+
+        $this->items		= $this->get('Items');
+
+        // Check for errors.
+		if (count($errors = $this->get('Errors'))) {
+			JError::raiseError(500, implode("\n", $errors));
+			return false;
+		}
+
+        
 		parent::display($tpl);
 	}
 }

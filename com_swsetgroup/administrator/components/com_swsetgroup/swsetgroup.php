@@ -13,24 +13,9 @@ defined('_JEXEC') or die;
 // Include dependencies
 jimport('joomla.application.component.controller');
 
-// Require specific controller if requested
-$controller = JRequest::getWord('controller');
-
-if($controller){
-    $path = JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php';
-    if (file_exists($path)){
-        require_once $path;
-    }else{
-        $controller = '';
-    }
-}
-
 // Create the controller
-$classname      = 'SwsetgroupController'.$controller;
-$controller     = new $classname();
-
-$task = JRequest::getCmd('task', null);
+$controller     = JController::getInstance('Swsetgroup');
 // Perform the Request task
-$controller->execute($task);
+$controller->execute(JRequest::getCmd('task'));
 // Redirect if set by the controller
 $controller->redirect();
