@@ -33,7 +33,7 @@ class SwsetgroupModelPending extends JModelList
 		$query = $db->getQuery(true);
 
 		// Select the required fields from the table.
-		$query->select('a.*');
+		$query->select('a.id, a.username, a.time');
         $query->from('#__swsetgroup_pending AS a');
 
         //Join from user table
