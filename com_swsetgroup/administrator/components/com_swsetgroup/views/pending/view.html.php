@@ -17,8 +17,16 @@ jimport('joomla.application.component.view');
 
 class SwsetgroupViewPending extends JView
 {
+    /**
+     * default function to display pending requests
+     *
+     * @param null $tpl
+     * @return bool
+     */
 	function display($tpl = null){
-		JToolBarHelper::title( JText::_( 'COM_SWSETGROUP' ), 'generic.png' );
+		JToolBarHelper::title(JText::_( 'COM_SWSETGROUP' ), 'generic.png');
+        JToolBarHelper::custom('pending.approve', 'apply.png', 'apply_f2.png', 'COM_SWSETGROUP_APPROVE');
+        JToolBarHelper::deleteList('', 'pending.remove');
 
         $this->items		= $this->get('Items');
 
@@ -28,7 +36,6 @@ class SwsetgroupViewPending extends JView
 			return false;
 		}
 
-        
 		parent::display($tpl);
 	}
 }

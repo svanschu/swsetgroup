@@ -24,7 +24,7 @@ class SwsetgroupModelPending extends JModelList
 	 * Build an SQL query to load the list data.
 	 *
 	 * @return	JDatabaseQuery
-	 * @since	0.0.0
+	 * @since	1.0
 	 */
 	protected function getListQuery()
 	{
@@ -41,5 +41,54 @@ class SwsetgroupModelPending extends JModelList
         $query->join('LEFT', '#__users AS u ON u.id = a.uid');
 
         return $query;
+    }
+
+    /**
+     * Approve a request to join a group by verifying the e-mail
+     *
+     * @param  array $id  primary key of the request
+     * @return bool true on success. else false with setting error
+     * @since 1.0
+     */
+    public function approve($cid = array())
+    {
+        $table  = $this->getTable('pending', 'SwsetgroupTable');
+        if (!$table->load($cid[0])) {
+            $this->setError($table->getError());
+            return false;
+        }
+
+        jimport('joomla.user.helper');
+
+        $res = JUserHelper::addUserToGroup($table->uid, $table->gid);
+        if ( $res !== true) {
+            $this->setError($res);
+            return false;
+        }
+
+        if (!$this->remove($cid))
+            return false;
+
+        return true;
+    }
+
+    /**
+     * Remove requests
+     *
+     * @param  array $cid array of id to delete
+     * @return bool
+     * @since 1.0
+     */
+    public function remove($cid = array())
+    {
+        $table  = $this->getTable('pending', 'SwsetgroupTable');
+        foreach ($cid as $id) {
+            if (!$table->delete($id)) {
+                $this->setError($table->getError());
+                return false;
+            }
+        }
+
+        return true;
     }
 }

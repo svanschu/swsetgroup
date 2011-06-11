@@ -12,7 +12,7 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<form action="index.php" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_swsetgroup&view=pending');?>" method="post" name="adminForm" id="adminForm">
 <table class="adminlist">
 	<thead>
 		<tr>
@@ -44,8 +44,6 @@ defined('_JEXEC') or die('Restricted access');
 	</tbody>
 </table>
 
-<input type="hidden" name="option" value="com_swsetgroup" />
-<input type="hidden" name="id" value="" />
 <input type="hidden" name="task" value="" />
 <input type="hidden" name="boxchecked" value="0" />
 <?php echo JHTML::_( 'form.token' ); ?>
