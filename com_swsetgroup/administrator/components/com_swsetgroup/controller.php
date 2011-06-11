@@ -23,6 +23,11 @@ class SwsetgroupController extends JController
 
 	function display()
     {
+        require_once JPATH_COMPONENT.'/helpers/swsetgroup.php';
+
+		// Load the submenu.
+		ContentHelper::addSubmenu(JRequest::getCmd('view', 'pending'));
+
 		parent::display();
 	}
 }
