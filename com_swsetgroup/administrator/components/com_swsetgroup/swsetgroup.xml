@@ -11,21 +11,31 @@
 	<description>COM_SWSETGROUP_DESC</description>
 
 	<files folder="site">
+        <folder>models</folder>
+        <file>controller.php</file>
+        <file>index.html</file>
+        <file>swsetgroup.php</file>
 	</files>
-	<languages folder="site">
-
+	<languages folder="site/languages/en-GB">
+        <language tag="en-GB">en-GB.com_swsetgroup.ini</language>
 	</languages>
+    
 	<administration>
+        <menu view="pending" img="" link="option=com_swsetgroup">COM_SWSETGROUP</menu>
 		<files folder="admin">
-            <file>swsetgroup.php</file>
-            <file>swsetgroup.xml</file>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
             <file>controller.php</file>
             <file>index.html</file>
-            <folder>views</folder>
+            <file>install.sql</file>
+            <file>swsetgroup.php</file>
 		</files>
-		<languages folder="admin">
-            <language tag="en-GB">language/en-GB.com_swsetgroup.ini</language>
-            <language tag="en-GB">language/en-GB.com_swsetgroup.sys.ini</language>
+		<languages folder="admin/languages/en-GB">
+            <language tag="en-GB">en-GB.com_swsetgroup.ini</language>
+            <language tag="en-GB">en-GB.com_swsetgroup.sys.ini</language>
 		</languages>
 	</administration>
 </extension>

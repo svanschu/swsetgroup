@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="swsetgroup" default="build">
+    <!-- Set the directory where the packages should be saved. Relative to the build dir -->
+    <property name="builddir" value="./../../packages/swsetgroup" override="true" />
+    <!-- Declare Project src files -->
+    <property name="src" value="./.." override="true" />
+    <property name="admin" value="${src}/com_swsetgroup/administrator/components/com_swsetgroup" />
+    <property name="frontend" value="${src}/com_swsetgroup/components/com_swsetgroup" />
+    <property name="plugins" value="${src}/plugin" />
+
+    <!-- Set the needed filesets. First admin folder -->
+    <fileset dir="${admin}" id="admin">
+        <include name="**" />
+        <exclude name="swsetgroup.xml" />
+    </fileset>
+    <!-- now frontend in main folder -->
+    <fileset dir="${frontend}" id="frontend">
+        <include name="**" />
+    </fileset>
+    <!-- plugins -->
+    <fileset dir="${plugins}" id="plugins">
+        <include name="**" />
+    </fileset>
+
+    <target name="build" depends="prepare, copy, zipplugins">
+        <zip destfile="${builddir}/swsetgroup.zip">
+            <fileset dir="${builddir}/tmp">
+                <include name="**" />
+            </fileset>
+        </zip>
+        <delete dir="${builddir}/tmp" />
+        <echo msg="Zip ALL OK!" />
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${builddir}/tmp/admin" />
+        <mkdir dir="${builddir}/tmp/site" />
+        <mkdir dir="${builddir}/tmp/plugins" />
+        <echo msg="Create temp folder OK!" />
+    </target>
+
+    <target name="copy">
+        <!--Copy admin files to tmp folder -->
+        <copy todir="${builddir}/tmp/admin">
+            <fileset refid="admin" />
+        </copy>
+        <!-- Copy frontend files -->
+        <copy todir="${builddir}/tmp/site">
+            <fileset refid="frontend" />
+        </copy>
+        <!-- copy the plugins -->
+        <copy todir="${builddir}/tmp/plugins">
+            <fileset refid="plugins" />
+        </copy>
+         <!-- Copy the manifest.xml -->
+        <copy file="${admin}/swsetgroup.xml" tofile="${builddir}/tmp/swsetgroup.xml" />
+        <echo msg="Copy was successfull" />
+    </target>
+
+    <target name="zipplugins">
+        <!-- zip the plugins -->
+        <zip destfile="${builddir}/tmp/plugins/plg_swsetgroup.zip">
+            <fileset dir="${builddir}/tmp/plugins">
+                <include name="swsetgroup/**" />
+            </fileset>
+        </zip>
+        <delete dir="${builddir}/tmp/plugins/swsetgroup" />
+
+        <echo msg="Zip Plug-ins OK!" />
+    </target>
+</project>
