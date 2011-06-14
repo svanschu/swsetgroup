@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Override variables:
+    - Version number -Dbuild.version=0.0.0
+    All paths starts at the build folder
+    - Build dir -Dbuilddir=./../../packages/swsetgroup
+    - Sourcefiles -Dsrc=./..
+-->
 <project name="swsetgroup" default="build">
+    <!-- Version number of build -->
+    <property name="build.version" value="0.0.0" override="true" />
+    <!-- Set the build number -->
+    <!-- attention you need this additional Task to use the taskdef above
+        https://github.com/lorddarkangel/phing-buildnumber-task
+    -->
+    <taskdef name="buildnumber" classname="phing.tasks.ext.BuildnumberTask" />
+    <buildnumber file="build.txt" property="build.number" />
+    <!-- get the date for build -->
+    <tstamp prefix="build.date" />
     <!-- Set the directory where the packages should be saved. Relative to the build dir -->
     <property name="builddir" value="./../../packages/swsetgroup" override="true" />
     <!-- Declare Project src files -->
@@ -23,7 +40,7 @@
     </fileset>
 
     <target name="build" depends="prepare, copy, zipplugins">
-        <zip destfile="${builddir}/swsetgroup.zip">
+        <zip destfile="${builddir}/swsetgroup_${build.version}_b${build.number}_${build.date.DSTAMP}.zip">
             <fileset dir="${builddir}/tmp">
                 <include name="**" />
             </fileset>
@@ -55,11 +72,25 @@
          <!-- Copy the manifest.xml -->
         <copy file="${admin}/swsetgroup.xml" tofile="${builddir}/tmp/swsetgroup.xml" />
         <echo msg="Copy was successfull" />
+        <!-- insert version, build number and date into the xml files -->
+        <reflexive>
+            <fileset dir="${builddir}/tmp/">
+                <include name="**/swsetgroup.xml" />
+                <!--include name="swsetgroup.xml" -->
+            </fileset>
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="sw\.build\.version" replace="${build.version}" />
+                    <regexp pattern="sw\.build\.number" replace="${build.number}" />
+                    <regexp pattern="sw\.build\.date" replace="${build.date.DSTAMP}" />
+                </replaceregexp>
+            </filterchain>
+        </reflexive>
     </target>
 
     <target name="zipplugins">
         <!-- zip the plugins -->
-        <zip destfile="${builddir}/tmp/plugins/plg_swsetgroup.zip">
+        <zip destfile="${builddir}/tmp/plugins/plg_swsetgroup_${build.version}_b${build.number}_${build.date.DSTAMP}.zip">
             <fileset dir="${builddir}/tmp/plugins">
                 <include name="swsetgroup/**" />
             </fileset>
