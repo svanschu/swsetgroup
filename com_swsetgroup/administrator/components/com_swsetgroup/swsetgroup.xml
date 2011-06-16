@@ -18,6 +18,11 @@
             <file driver="mysql" charset="utf8">install.sql</file>
         </sql>
     </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">uninstall.sql</file>
+        </sql>
+    </uninstall>
     
 	<files folder="site">
         <folder>models</folder>
@@ -42,6 +47,7 @@
             <file>index.html</file>
             <file>install.sql</file>
             <file>swsetgroup.php</file>
+            <file>uninstall.sql</file>
 		</files>
 		<languages folder="admin/languages/en-GB">
             <language tag="en-GB">en-GB.com_swsetgroup.ini</language>

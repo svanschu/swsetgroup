@@ -12,7 +12,6 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-
 /**
  * Manage the 
  */
@@ -29,5 +28,11 @@ class com_swsetgroupInstallerScript
     function update($parent)
     {
         self::install($parent);
+    }
+
+    function uninstall($parent)
+    {
+        require_once JPATH_ADMINISTRATOR.'/components/com_swsetgroup/helpers/install.php';
+        SwsetgroupInstallHelper::uninstallPlugin();
     }
 }

@@ -53,4 +53,22 @@ class SwsetgroupInstallHelper
 
         return true;
     }
+
+    function uninstallPlugin()
+    {
+        $db = JFactory::getDBO();
+        $query = $db->getQuery(true);
+        $query->select('extension_id');
+        $query->from('#__extensions');
+        $query->where('type=\'plugin\'');
+        $query->where('folder=\'user\'');
+        $query->where('element=\'swsetgroup\'');
+        $db->setQuery($query);
+        $id = $db->loadResult();
+        if ($id) {
+            $installer = new JInstaller();
+            $installer->uninstall('plugin', $id);
+        }
+
+    }
 }
