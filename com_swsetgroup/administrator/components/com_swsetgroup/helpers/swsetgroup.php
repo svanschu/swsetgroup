@@ -14,13 +14,13 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Content component helper.
+ * SW set group component helper.
  *
  * @package		Joomla.Administrator
- * @subpackage	com_content
- * @since		1.6
+ * @subpackage	com_swsetgroup
+ * @since		1.0
  */
-class ContentHelper
+class SwsetgroupHelper
 {
 	/**
 	 * Configure the Linkbar.

@@ -8,7 +8,7 @@
  */
 
 // no direct access
-defined('_JEXEC') or die;
+defined('_JEXEC') or die('Restricted access');
 
 // Include dependencies
 jimport('joomla.application.component.controller');

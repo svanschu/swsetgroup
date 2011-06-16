@@ -25,8 +25,13 @@ class SwsetgroupController extends JController
     {
         require_once JPATH_COMPONENT.'/helpers/swsetgroup.php';
 
+        $vName = JRequest::getCmd('view', null);
+        if (empty($vName)) {
+            JRequest::setVar('view', 'pending');
+            $vName = 'pending';
+        }
 		// Load the submenu.
-		ContentHelper::addSubmenu(JRequest::getCmd('view', 'pending'));
+		SwsetgroupHelper::addSubmenu($vName);
 
 		parent::display();
 	}

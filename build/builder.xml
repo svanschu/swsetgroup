@@ -29,6 +29,7 @@
     <fileset dir="${admin}" id="admin">
         <include name="**" />
         <exclude name="swsetgroup.xml" />
+        <exclude name="install.php" />
     </fileset>
     <!-- now frontend in main folder -->
     <fileset dir="${frontend}" id="frontend">
@@ -52,7 +53,7 @@
     <target name="prepare">
         <mkdir dir="${builddir}/tmp/admin" />
         <mkdir dir="${builddir}/tmp/site" />
-        <mkdir dir="${builddir}/tmp/plugins" />
+        <mkdir dir="${builddir}/tmp/admin/plugins" />
         <echo msg="Create temp folder OK!" />
     </target>
 
@@ -66,17 +67,17 @@
             <fileset refid="frontend" />
         </copy>
         <!-- copy the plugins -->
-        <copy todir="${builddir}/tmp/plugins">
+        <copy todir="${builddir}/tmp/admin/plugins">
             <fileset refid="plugins" />
         </copy>
          <!-- Copy the manifest.xml -->
         <copy file="${admin}/swsetgroup.xml" tofile="${builddir}/tmp/swsetgroup.xml" />
+        <copy file="${admin}/install.php" tofile="${builddir}/tmp/install.php" />
         <echo msg="Copy was successfull" />
         <!-- insert version, build number and date into the xml files -->
         <reflexive>
             <fileset dir="${builddir}/tmp/">
-                <include name="**/swsetgroup.xml" />
-                <!--include name="swsetgroup.xml" -->
+                <include name="**" />
             </fileset>
             <filterchain>
                 <replaceregexp>
@@ -90,12 +91,12 @@
 
     <target name="zipplugins">
         <!-- zip the plugins -->
-        <zip destfile="${builddir}/tmp/plugins/plg_swsetgroup_${build.version}_b${build.number}_${build.date.DSTAMP}.zip">
-            <fileset dir="${builddir}/tmp/plugins">
+        <zip destfile="${builddir}/tmp/admin/plugins/plg_swsetgroup_${build.version}_b${build.number}_${build.date.DSTAMP}.zip">
+            <fileset dir="${builddir}/tmp/admin/plugins">
                 <include name="swsetgroup/**" />
             </fileset>
         </zip>
-        <delete dir="${builddir}/tmp/plugins/swsetgroup" />
+        <delete dir="${builddir}/tmp/admin/plugins/swsetgroup" />
 
         <echo msg="Zip Plug-ins OK!" />
     </target>
