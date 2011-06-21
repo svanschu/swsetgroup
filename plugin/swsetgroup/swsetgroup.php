@@ -129,16 +129,19 @@ class plgUserSwsetgroup extends JPlugin
                     }
                     
                 } else {
-                    //$real_user = new JUser($user['id']);
+                    $real_user = new JUser($user['id']);
 
                     // Remove user from group.
-                    JUserHelper::removeUserFromGroup($user['id'], $group);
-                    //$k = array_search($group, $real_user->groups);
-                    //if ($k !== FALSE) {
-                    //    unset($real_user->groups[$k]);
-                    //}
+                    /**
+                     * disabled till the function is fixed in Joomla
+                     * JUserHelper::removeUserFromGroup($user['id'], $group);
+                     **/
+                    $k = array_search($group, $real_user->groups);
+                    if ($k !== FALSE) {
+                        unset($real_user->groups[$k]);
+                    }
 
-                    //$real_user->save();
+                    $real_user->save();
                 }
             }
         }
