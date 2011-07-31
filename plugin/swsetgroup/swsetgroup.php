@@ -75,11 +75,7 @@ class plgUserSwsetgroup extends JPlugin
                     $query->delete('#__swsetgroup_pending');
                     $query->where('uid=' . $user['id']);
                     $db->setQuery($query);
-                    if (!$db->query()) {
-                        $e = new JException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST', $db->getErrorMsg()));
-                        $this->setError($e);
-                        return false;
-                    }
+                    $db->query();
 
                     //Create Key if not exist
                     if ($activation_key === false) {
@@ -95,9 +91,7 @@ class plgUserSwsetgroup extends JPlugin
                     $query->set($set);
                     $db->setQuery($query);
                     if (!$db->query()) {
-                        $e = new JException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST', $db->getErrorMsg()));
-                                    $this->setError($e);
-                            return false;
+                        throw new DatabaseException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST'));
                     }
                 } else {
                     // Remove user from group.

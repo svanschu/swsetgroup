@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" client="site" version="1.6.0" method="upgrade">
+<extension type="component" client="site" version="1.7" method="upgrade">
 	<name>COM_SWSETGROUP</name>
 	<author>Benjamin Berg &amp; Sven Schultschik</author>
 	<creationDate>sw.build.date</creationDate>

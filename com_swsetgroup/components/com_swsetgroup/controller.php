@@ -13,6 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.controller');
+jimport('joomla.application.input');
 
 /**
  * Base controller class for SW Set Group.
@@ -25,7 +26,8 @@ class SwsetgroupController extends JController
 {
     public function activate()
     {
-        $token = JRequest::getVar('token');
+        $input = new JInput();
+        $token = $input->get('token', null, 'cmd');
 
         // Check that the token is in a valid format.
         if ($token === null) {

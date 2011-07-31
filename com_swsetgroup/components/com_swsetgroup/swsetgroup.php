@@ -12,10 +12,12 @@ defined('_JEXEC') or die;
 
 // Include dependencies
 jimport('joomla.application.component.controller');
+jimport('joomla.application.input');
 
 // Create the controller
 $controller     = JController::getInstance('Swsetgroup');
 // Perform the Request task
-$controller->execute(JRequest::getCmd('task', 'activate'));
+$input = new JInput();
+$controller->execute($input->get('task', 'activate'));
 // Redirect if set by the controller
 $controller->redirect();

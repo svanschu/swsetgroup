@@ -54,8 +54,7 @@ class SwsetgroupModelSwsetgroup extends JModel
         $db->setQuery($query);
 
         if (!$db->query()) {
-            $e = new JException(JText::_('COM_SWSETGROUP_ERROR_DELETE_FAILED', $db->getErrorMsg()));
-            $this->setError($e);
+            JLog::add(JText::_('COM_SWSETGROUP_ERROR_DELETE_FAILED'), JLog::WARNING);
             return false;
         }
 

@@ -13,6 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.controller');
+jimport('joomla.application.input');
 
 class SwsetgroupController extends JController
 {
@@ -24,10 +25,10 @@ class SwsetgroupController extends JController
 	function display()
     {
         require_once JPATH_COMPONENT.'/helpers/swsetgroup.php';
-
-        $vName = JRequest::getCmd('view', null);
+        $input = new JInput();
+        $vName = $input->get('view', null, 'cmd');
         if (empty($vName)) {
-            JRequest::setVar('view', 'pending');
+            $input->set('view', 'pending');
             $vName = 'pending';
         }
 		// Load the submenu.

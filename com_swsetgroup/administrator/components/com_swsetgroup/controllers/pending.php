@@ -33,12 +33,13 @@ class SwsetgroupControllerPending extends JControllerAdmin
         // Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         //get the Request ID
-        $cid    = JRequest::getVar('cid', null);
+        $input = new JInput();
+        $cid    = $input->get('cid', null);
 
         $model = $this->getModel('pending');
 
         if (!$model->approve($cid)) {
-            JError::raiseWarning(500, $model->getError());
+            JLog::add($model->getError(), JLog::WARNING);
         }
 
         $this->setRedirect('index.php?option=com_swsetgroup&view=pending');
@@ -46,15 +47,16 @@ class SwsetgroupControllerPending extends JControllerAdmin
 
     function remove()
     {
+        $input = new JInput();
         // Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         //get the Request ID
-        $cid    = JRequest::getVar('cid', null);
+        $cid    = $input->get('cid', null);
 
         $model = $this->getModel('pending');
 
         if (!$model->remove($cid)) {
-            JError::raiseWarning(500, $model->getError());
+            JLog::add($model->getError(), JLog::WARNING);
         }
 
         $this->setRedirect('index.php?option=com_swsetgroup&view=pending');

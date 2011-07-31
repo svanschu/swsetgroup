@@ -33,13 +33,13 @@ class SwsetgroupInstallHelper
         $path = JPATH_ADMINISTRATOR.'/components/com_swsetgroup/plugins/plg_swsetgroup_sw.build.version_bsw.build.number_sw.build.date.zip';
         //plugin zip exist?
         if (!JFile::exists($path)) {
-            JError::raiseError('', JText::sprintf('COM_SWSETGROUP_INSTALL_PLUGIN_NOT_FOUND', $path));
+            JLog::add(JText::sprintf('COM_SWSETGROUP_INSTALL_PLUGIN_NOT_FOUND', $path), JLog::ERROR);
             return false;
         }
         //extract the zip
         $extpath = JPATH_ROOT.'/tmp/';
         if (!JArchive::extract($path, $extpath)) {
-            JError::raiseError('', JText::_('COM_SWSETGROUP_INSTALL_PLUGIN_UNZIP_FAIL'));
+            JLog::add(JText::_('COM_SWSETGROUP_INSTALL_PLUGIN_UNZIP_FAIL'), JLog::ERROR);
             return false;
         }
         //get installer instance
