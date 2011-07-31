@@ -61,12 +61,12 @@ class SwsetgroupModelPending extends JModelList
         jimport('joomla.user.helper');
 
         $res = JUserHelper::addUserToGroup($table->uid, $table->gid);
-        if ( $res !== true) {
+        if ($res != true) {
             $this->setError($res);
             return false;
         }
 
-        if (!$this->remove($cid))
+        if (!self::remove($cid))
             return false;
 
         return true;

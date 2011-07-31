@@ -3,7 +3,7 @@
  * @version $Id: $
  * SW SetGroup Component
  *
- * @package	SW SetGroup
+ * @package    SW SetGroup
  * @Copyright (C) 2011 Benjamin Berg & Sven Schultschik All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.schultschik.de
@@ -12,28 +12,27 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modelform');
 /**
  * model for sw set group
  *
- * @package		Joomla.Site
- * @subpackage	com_swsetgroup
- * @since		1.0
+ * @package        Joomla.Site
+ * @subpackage    com_swsetgroup
+ * @since        1.0
  */
-class SwsetgroupModelSwsetgroup extends JModelForm
+class SwsetgroupModelSwsetgroup extends JModel
 {
     /**
-	 * Method to activate a Group for a user
-	 *
-	 * @param	$token string		The activation token.
-	 * @return	mixed		False on failure.
-	 * @since	1.0
-	 */
-	public function activate($token)
-	{
-        $db		= $this->getDbo();
+     * Method to activate a Group for a user
+     *
+     * @param    $token string        The activation token.
+     * @return   mixed        False on failure.
+     * @since    1.0
+     */
+    public function activate($token)
+    {
+        $db     = $this->getDbo();
         $query  = $db->getQuery(true);
-        //Get the data for adding group
+        // Get the data for adding group
         $query->select('*');
         $query->from('#__swsetgroup_pending');
         $query->where('activation='.$db->quote($token));
@@ -55,10 +54,10 @@ class SwsetgroupModelSwsetgroup extends JModelForm
         $db->setQuery($query);
 
         if (!$db->query()) {
-			$e = new JException(JText::_('COM_SWSETGROUP_ERROR_DELETE_FAILED', $db->getErrorMsg()));
-			$this->setError($e);
-			return false;
-		}
+            $e = new JException(JText::_('COM_SWSETGROUP_ERROR_DELETE_FAILED', $db->getErrorMsg()));
+            $this->setError($e);
+            return false;
+        }
 
         return true;
     }

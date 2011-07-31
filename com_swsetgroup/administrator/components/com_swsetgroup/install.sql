@@ -7,7 +7,9 @@
 CREATE TABLE IF NOT EXISTS `#__swsetgroup_pending` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `uid` int(11) NOT NULL COMMENT '#__users',
+  `gid` int(11) NOT NULL,
+  `activation` varchar(32) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uid` (`uid`)
+  UNIQUE KEY `uid_gid` (`uid`, `gid`)
 );
