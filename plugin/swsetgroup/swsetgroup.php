@@ -114,12 +114,12 @@ class plgUserSwsetgroup extends JPlugin
             $lang->load('plg_user_swsetgroup');
 
             //Prepare the e-mail
-            $mail = JMail::getInstance();
-            $mail->addRecipient($user['email']);
-            $mail->setSubject(sprintf($lang->_('PLG_USER_SWSETGROUP_EMAIL_SUBJECT'), $user['name'], $sitename));
-            $mail->setBody(sprintf($lang->_('PLG_USER_SWSETGROUP_EMAIL_BODY'), $user['name'], $sitename,
-                           JURI::root().'index.php?option=com_swsetgroup&task=activate&token='.$activation_key));
-            $mail->setSender($config->get('mailfrom'));
+            $mail = JMail::getInstance()
+                    ->addRecipient($user['email'])
+                    ->setSubject(sprintf($lang->_('PLG_USER_SWSETGROUP_EMAIL_SUBJECT'), $user['name'], $sitename))
+                    ->setBody(sprintf($lang->_('PLG_USER_SWSETGROUP_EMAIL_BODY'), $user['name'], $sitename,
+                           JURI::root().'index.php?option=com_swsetgroup&task=activate&token='.$activation_key))
+                    ->setSender($config->get('mailfrom'));
             $return = $mail->send();
             if ($return !== true) {
                 $this->setError(JText::_('PLG_USER_SWSETGROUP_EMAIL_SEND_FAILED'));
