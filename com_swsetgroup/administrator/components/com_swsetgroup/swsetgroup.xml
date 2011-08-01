@@ -30,8 +30,9 @@
         <file>index.html</file>
         <file>swsetgroup.php</file>
 	</files>
-	<languages folder="site/language/en-GB">
-        <language tag="en-GB">en-GB.com_swsetgroup.ini</language>
+	<languages folder="site/language">
+        <language tag="de-DE">de-DE/de-DE.com_swsetgroup.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_swsetgroup.ini</language>
 	</languages>
     
 	<administration>
@@ -49,9 +50,11 @@
             <file>swsetgroup.php</file>
             <file>uninstall.sql</file>
 		</files>
-		<languages folder="admin/language/en-GB">
-            <language tag="en-GB">en-GB.com_swsetgroup.ini</language>
-            <language tag="en-GB">en-GB.com_swsetgroup.sys.ini</language>
+		<languages folder="admin/language">
+            <language tag="de-DE">de-DE/de-DE.com_swsetgroup.ini</language>
+            <language tag="de-DE">de-DE/de-DE.com_swsetgroup.sys.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_swsetgroup.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_swsetgroup.sys.ini</language>
 		</languages>
 	</administration>
 </extension>

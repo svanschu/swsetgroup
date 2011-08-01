@@ -35,8 +35,5 @@ class SwsetgroupHelper
 		JSubMenuHelper::addEntry( JText::_('COM_SWSETGROUP_PENDING'), 'index.php?option=com_swsetgroup&view=pending',
                                   $vName == 'pending'
         );
-		/*JSubMenuHelper::addEntry( JText::_('COM_SWSETGROUP_REGULAR_EXPRESSION_CONFIG'),
-                                  'index.php?option=com_swsetgroup&view=config', $vName == 'categories'
-        );*/
 	}
 }

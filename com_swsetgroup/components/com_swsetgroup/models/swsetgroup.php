@@ -52,12 +52,7 @@ class SwsetgroupModelSwsetgroup extends JModel
         $query->from('#__swsetgroup_pending');
         $query->where('id='.$db->quote($res->id));
         $db->setQuery($query);
-
-        if (!$db->query()) {
-            JLog::add(JText::_('COM_SWSETGROUP_ERROR_DELETE_FAILED'), JLog::WARNING);
-            return false;
-        }
-
+        $db->query();
         return true;
     }
 }
