@@ -52,18 +52,19 @@ class SwsetgroupModelPending extends JModelList
      */
     public function approve($cid = array())
     {
-        $table  = $this->getTable('pending', 'SwsetgroupTable');
-        if (!$table->load($cid[0])) {
-            $this->setError($table->getError());
-            return false;
-        }
-
         jimport('joomla.user.helper');
+        $table  = $this->getTable('pending', 'SwsetgroupTable');
+        foreach ($cid as $id) {
+            if (!$table->load($id)) {
+                $this->setError($table->getError());
+                return false;
+            }
 
-        $res = JUserHelper::addUserToGroup($table->uid, $table->gid);
-        if ($res != true) {
-            $this->setError($res);
-            return false;
+            $res = JUserHelper::addUserToGroup($table->uid, $table->gid);
+            if ($res != true) {
+                $this->setError($res);
+                return false;
+            }
         }
 
         if (!self::remove($cid))

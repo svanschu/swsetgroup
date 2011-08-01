@@ -67,31 +67,33 @@ class plgUserSwsetgroup extends JPlugin
             } else {
                 // The user already exists
                 if (preg_match('#'.$preg.'#', $user['email'])) {
-                    $user['new_groups'][] = $group;
-                    $db = JFactory::getDbo();
+                    if (!in_array($group, JUserHelper::getUserGroups($user['id']))) {
+                        $user['new_groups'][] = $group;
+                        $db = JFactory::getDbo();
 
-                    // Remove any existing activations for the user
-                    $query = $db->getQuery(true);
-                    $query->delete('#__swsetgroup_pending');
-                    $query->where('uid=' . $user['id']);
-                    $db->setQuery($query);
-                    $db->query();
+                        // Remove any existing activations for the user
+                        $query = $db->getQuery(true);
+                        $query->delete('#__swsetgroup_pending');
+                        $query->where('uid=' . $user['id']);
+                        $db->setQuery($query);
+                        $db->query();
 
-                    //Create Key if not exist
-                    if ($activation_key === false) {
-                        $activation_key = JUserHelper::genRandomPassword();
-                    }
+                        //Create Key if not exist
+                        if ($activation_key === false) {
+                            $activation_key = JUserHelper::genRandomPassword();
+                        }
 
-                    //save information about the request
-                    $query = $db->getQuery(true);
-                    $query->insert('#__swsetgroup_pending');
-                    $set = array('uid=' . $user['id'],
-                                 'activation=\'' . $activation_key . '\'',
-                                 'gid=' . $group);
-                    $query->set($set);
-                    $db->setQuery($query);
-                    if (!$db->query()) {
-                        throw new DatabaseException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST'));
+                        //save information about the request
+                        $query = $db->getQuery(true);
+                        $query->insert('#__swsetgroup_pending');
+                        $set = array('uid=' . $user['id'],
+                                     'activation=\'' . $activation_key . '\'',
+                                     'gid=' . $group);
+                        $query->set($set);
+                        $db->setQuery($query);
+                        if (!$db->query()) {
+                            throw new DatabaseException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST'));
+                        }
                     }
                 } else {
                     // Remove user from group.
@@ -99,7 +101,6 @@ class plgUserSwsetgroup extends JPlugin
                 }
             }
         }
-
 
         if ($activation_key !== false) {
             $config = JFactory::getConfig();
@@ -121,7 +122,6 @@ class plgUserSwsetgroup extends JPlugin
             $mail->setSender($config->get('mailfrom'));
             $return = $mail->send();
             if ($return !== true) {
-                //TODO richtig?
                 $this->setError(JText::_('PLG_USER_SWSETGROUP_EMAIL_SEND_FAILED'));
                 // Send a system message to administrators receiving system mails
                 $query = $db->getQuery(true);

@@ -34,7 +34,7 @@ class SwsetgroupControllerPending extends JControllerAdmin
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         //get the Request ID
         $input = new JInput();
-        $cid    = $input->get('cid', null);
+        $cid    = $input->get('cid', null, '');
 
         $model = $this->getModel('pending');
 
@@ -51,8 +51,7 @@ class SwsetgroupControllerPending extends JControllerAdmin
         // Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         //get the Request ID
-        $cid    = $input->get('cid', null);
-
+        $cid    = $input->get('cid', null, '');
         $model = $this->getModel('pending');
 
         if (!$model->remove($cid)) {
