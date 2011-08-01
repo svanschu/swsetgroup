@@ -56,9 +56,10 @@ class plgUserSwsetgroup extends JPlugin
         }
 
         $activation_key = false;
+        $app = JFactory::getApplication();
         //perform the preg_match
         foreach ($group_preg as $group => $preg) {
-            if ($isnew) {
+            if ($isnew || ($app->isAdmin() && !in_array($group, JUserHelper::getUserGroups($user['id'])))) {
                 // The user is new
                 // Add to the group if the regular expression matches
                 if (preg_match('#'.$preg.'#', $user['email'])) {
@@ -118,7 +119,7 @@ class plgUserSwsetgroup extends JPlugin
                     ->addRecipient($user['email'])
                     ->setSubject(sprintf($lang->_('PLG_USER_SWSETGROUP_EMAIL_SUBJECT'), $user['name'], $sitename))
                     ->setBody(sprintf($lang->_('PLG_USER_SWSETGROUP_EMAIL_BODY'), $user['name'], $sitename,
-                           JURI::root().'index.php?option=com_swsetgroup&task=activate&token='.$activation_key))
+                           JURI::base().'index.php?option=com_swsetgroup&task=activate&token='.$activation_key))
                     ->setSender($config->get('mailfrom'));
             $return = $mail->send();
             if ($return !== true) {
