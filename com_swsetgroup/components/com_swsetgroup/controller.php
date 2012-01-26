@@ -31,7 +31,7 @@ class SwsetgroupController extends JController
 
         // Check that the token is in a valid format.
         if ($token === null) {
-            JError::raiseError(403, JText::_('JINVALID_TOKEN'));
+			throw new Exception ( JText::_('JINVALID_TOKEN'), 403);
             return false;
         }
 

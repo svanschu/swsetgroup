@@ -32,8 +32,10 @@ class SwsetgroupHelper
 	 */
 	public static function addSubmenu($vName)
 	{
-		JSubMenuHelper::addEntry( JText::_('COM_SWSETGROUP_PENDING'), 'index.php?option=com_swsetgroup&view=pending',
-                                  $vName == 'pending'
+		JSubMenuHelper::addEntry(
+			JText::_('COM_SWSETGROUP_PENDING'),
+			'index.php?option=com_swsetgroup&view=pending',
+			$vName == 'pending'
         );
 	}
 }

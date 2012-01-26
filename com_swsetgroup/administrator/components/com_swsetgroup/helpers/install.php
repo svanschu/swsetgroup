@@ -27,10 +27,10 @@ class SwsetgroupInstallHelper
      * Install the plugin
      * @return bool
      */
-    function installPlugin()
+    static function installPlugin()
     {
         //plugins folder exist?
-        $path = JPATH_ADMINISTRATOR.'/components/com_swsetgroup/plugins/plg_swsetgroup_sw.build.version_bsw.build.number_sw.build.date.zip';
+        $path = JPATH_ADMINISTRATOR.'/components/com_swsetgroup/plugins/plg_swsetgroup_1.1.0beta1_b37_20110805.zip';
         //plugin zip exist?
         if (!JFile::exists($path)) {
             JLog::add(JText::sprintf('COM_SWSETGROUP_INSTALL_PLUGIN_NOT_FOUND', $path), JLog::ERROR);
@@ -54,7 +54,7 @@ class SwsetgroupInstallHelper
         return true;
     }
 
-    function uninstallPlugin()
+    static function uninstallPlugin()
     {
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);

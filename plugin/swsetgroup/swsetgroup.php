@@ -93,7 +93,7 @@ class plgUserSwsetgroup extends JPlugin
                         $query->set($set);
                         $db->setQuery($query);
                         if (!$db->query()) {
-                            throw new DatabaseException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST'));
+                            throw new JDatabaseException(JText::_('PLG_USER_SWSETGROUP_ERROR_SAVE_REQUEST'));
                         }
                     }
                 } else {
@@ -126,13 +126,16 @@ class plgUserSwsetgroup extends JPlugin
                 $this->setError(JText::_('PLG_USER_SWSETGROUP_EMAIL_SEND_FAILED'));
                 // Send a system message to administrators receiving system mails
                 $query = $db->getQuery(true);
-                //TODO query prüfen ob correct
                 $query->select('id');
                 $query->from('#__users');
                 $query->where('block=`0`');
                 $query->where('sendEmail=`1`');
                 $db->setQuery($query);
-                $sendEmail = $db->loadResultArray();
+                try {
+					$sendEmail = $db->loadColumn();
+				} catch ( Exception $e ) {
+					JLog::add( 'SWSetGroup:loadSystemMailReceiver', JLog::WARNING);
+				}
                 if (count($sendEmail) > 0) {
                     $jdate = new JDate();
                     // Build the query to add the messages
@@ -140,14 +143,18 @@ class plgUserSwsetgroup extends JPlugin
                         VALUES ";
                     $messages = array();
                     foreach ($sendEmail as $userid) {
-                        $messages[] = "(".$userid.", ".$userid.", '".$jdate->toMySQL()."', '"
+                        $messages[] = "(".$userid.", ".$userid.", '".$jdate->toSql()."', '"
                                       .JText::_('PLG_USER_SWSETGROUP_MAIL_SEND_FAILURE_SUBJECT')."', '"
                                       .JText::sprintf('PLG_USER_SWSETGROUP_MAIL_SEND_FAILURE_BODY',
                                                       $return, $user['username'])."')";
                     }
                     $q .= implode(',', $messages);
                     $db->setQuery($q);
-                    $db->query();
+                    try {
+						$db->query();
+					} catch (Exception $e) {
+						JLog::add( 'SWSetGroup: Could not send e-mail to administrator.', JLog::WARNING);
+					}
                 }
                 return false;
             }
