@@ -112,7 +112,7 @@ class plgUserSwsetgroup extends JPlugin
                 $user_lang = $config->get('language');
             }
             $lang = JLanguage::getInstance($user_lang);
-            $lang->load('plg_user_swsetgroup');
+			$lang->load('plg_user_swsetgroup', JPATH_ADMINISTRATOR);
 
             //Prepare the e-mail
             $mail = JMail::getInstance()
