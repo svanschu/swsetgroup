@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PhingConfiguration">
     <buildFilePaths>
-      <buildFile options="-Dbuild.version=0.1.0" path="file://$PROJECT_DIR$/build/builder.xml" />
+      <buildFile options="-Dbuild.version=1.1.0beta1" path="file://$PROJECT_DIR$/build/builder.xml" />
     </buildFilePaths>
     <phingPath>/usr/bin/phing</phingPath>
   </component>
