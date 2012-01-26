@@ -8,7 +8,6 @@
         <authorEmail>admin@schultschik.de</authorEmail>
         <authorUrl>www.schultschik.de</authorUrl>
         <version>sw.build.version</version>
-        <build>sw.build.number</build>
         <description>PLG_USER_SWSETGROUP_DESCRIPTION</description>
         <files>
                 <filename plugin="swsetgroup">swsetgroup.php</filename>

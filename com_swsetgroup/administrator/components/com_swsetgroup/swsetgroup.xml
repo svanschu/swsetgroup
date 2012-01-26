@@ -8,7 +8,6 @@
     <authorEmail>admin@schultschik.de</authorEmail>
     <authorUrl>www.schultschik.de</authorUrl>
     <version>sw.build.version</version>
-    <build>sw.build.number</build>
     <description>COM_SWSETGROUP_DESC</description>
 
     <scriptfile>install.php</scriptfile>
