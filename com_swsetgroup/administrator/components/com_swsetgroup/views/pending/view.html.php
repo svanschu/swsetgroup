@@ -24,7 +24,8 @@ class SwsetgroupViewPending extends JView
      * @return bool
      */
 	function display($tpl = null){
-		JToolBarHelper::title(JText::_( 'COM_SWSETGROUP' ), 'generic.png');
+        JFactory::getDocument()->addStyleSheet(JURI::root()."media/com_swsetgroup/css/swsetgroup.admin.css");
+		JToolBarHelper::title(JText::_( 'COM_SWSETGROUP' ), 'swsetgroup.png');
         JToolBarHelper::custom('pending.approve', 'apply.png', 'apply_f2.png', 'COM_SWSETGROUP_APPROVE');
         JToolBarHelper::deleteList('', 'pending.remove');
 

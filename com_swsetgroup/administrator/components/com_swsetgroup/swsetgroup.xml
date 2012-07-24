@@ -23,6 +23,10 @@
         </sql>
     </uninstall>
 
+    <media destination="com_swsetgroup" folder="media">
+        <folder>images</folder>
+    </media>
+
     <files folder="site">
         <folder>models</folder>
         <file>controller.php</file>
@@ -35,7 +39,8 @@
     </languages>
 
     <administration>
-        <menu>COM_SWSETGROUP</menu>
+        <menu img="../media/com_swsetgroup/images/swsetgroup-16.png">COM_SWSETGROUP</menu>
+
         <files folder="admin">
             <folder>controllers</folder>
             <folder>helpers</folder>
