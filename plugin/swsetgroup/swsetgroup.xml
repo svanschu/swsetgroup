@@ -1,70 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="1.7" type="plugin" group="user" method="updgrade">
-        <name>plg_user_swsetgroup</name>
-        <author>Benjamin Berg &amp; Sven Schultschik</author>
-        <creationDate>sw.build.date</creationDate>
-        <copyright>Copyright (C) 2011 Benjamin Berg &amp; Sven Schultschik. All rights reserved.</copyright>
-        <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-        <authorEmail>admin@schultschik.de</authorEmail>
-        <authorUrl>www.schultschik.de</authorUrl>
-        <version>sw.build.version</version>
-        <description>PLG_USER_SWSETGROUP_DESCRIPTION</description>
-        <files>
-                <filename plugin="swsetgroup">swsetgroup.php</filename>
-                <filename>index.html</filename>
-        </files>
-        <languages folder="language">
-            <language tag="de-DE">de-DE/de-DE.plg_user_swsetgroup.ini</language>
-            <language tag="en-GB">de-DE/de-DE.plg_user_swsetgroup.sys.ini</language>
-            <language tag="en-GB">en-GB/en-GB.plg_user_swsetgroup.ini</language>
-            <language tag="en-GB">en-GB/en-GB.plg_user_swsetgroup.sys.ini</language>
-        </languages>
-        <config>
-                <fields name="params">
-                        <fieldset name="basic">
-                                <field name="preg_1_preg" type="text"
-                                        default=""
-                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
-                                        label="PLG_USER_SWSETGROUP_PREG"
-                                ></field>
-                                <field name="preg_1_group" type="usergroup"
-                                       default=""
-                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_USER_SWSETGROUP_GROUP"
-                                ></field>
-                                <field name="preg_2_preg" type="text"
-                                        default=""
-                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
-                                        label="PLG_USER_SWSETGROUP_PREG"
-                                ></field>
-                                <field name="preg_2_group" type="usergroup"
-                                       default=""
-                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_USER_SWSETGROUP_GROUP"
-                                ></field>
-                                <field name="preg_3_preg" type="text"
-                                        default=""
-                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
-                                        label="PLG_USER_SWSETGROUP_PREG"
-                                ></field>
-                                <field name="preg_3_group" type="usergroup"
-                                       default=""
-                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_USER_SWSETGROUP_GROUP"
-                                ></field>
-                                <field name="preg_4_preg" type="text"
-                                        default=""
-                                        description="PLG_USER_SWSETGROUP_PREG_DESC"
-                                        label="PLG_USER_SWSETGROUP_PREG"
-                                ></field>
-                                <field name="preg_4_group" type="usergroup"
-                                       default=""
-                                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
-                                       label="PLG_USER_SWSETGROUP_GROUP"
-                                ></field>
-                        </fieldset>
+    <name>plg_user_swsetgroup</name>
+    <author>Benjamin Berg &amp; Sven Schultschik</author>
+    <creationDate>sw.build.date</creationDate>
+    <copyright>Copyright (C) 2011 Benjamin Berg &amp; Sven Schultschik. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@schultschik.de</authorEmail>
+    <authorUrl>www.schultschik.de</authorUrl>
+    <version>sw.build.version</version>
+    <description>PLG_USER_SWSETGROUP_DESCRIPTION</description>
+    <files>
+        <filename plugin="swsetgroup">swsetgroup.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <languages folder="language">
+        <language tag="de-DE">de-DE/de-DE.plg_user_swsetgroup.ini</language>
+        <language tag="en-GB">de-DE/de-DE.plg_user_swsetgroup.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_user_swsetgroup.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_user_swsetgroup.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="preg_1_preg" type="text"
+                       default=""
+                       description="PLG_USER_SWSETGROUP_PREG_DESC"
+                       label="PLG_USER_SWSETGROUP_PREG"
+                        ></field>
+                <field name="preg_1_group" type="usergroup"
+                       default=""
+                       description="PLG_USER_SWSETGROUP_GROUP_DESC"
+                       label="PLG_USER_SWSETGROUP_GROUP"
+                        ></field>
+            </fieldset>
 
-                </fields>
-        </config>
+        </fields>
+    </config>
 
 </extension>
